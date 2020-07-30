@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Todo extends Model
 {
+    /** @var array $fillable */
+    protected $fillable = ['title', 'body'];
+
     /**
      * Get associated user
      *

@@ -25,12 +25,27 @@ class TodoTest extends TestCase
     }
 
     /**
-     * A basic unit test example.
+     * A Todo should Belong to A User
      *
      * @return void
      */
     public function testShouldHaveAnAssociatedUser()
     {
         $this->assertInstanceOf('App\User', $this->todo->user);
+    }
+
+    /**
+     * A User can Create a Todo
+     *
+     * @return void
+     */
+    public function testATodoCanBeCreatedByAUser()
+    {
+        $todo = factory('App\Todo')->make();
+        $user = \App\User::find($todo->user->id);
+
+        $user->todos()->create($todo->toArray());
+
+        $this->assertCount(1, $user->todos);
     }
 }

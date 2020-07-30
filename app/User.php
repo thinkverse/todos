@@ -3,6 +3,8 @@
 namespace App;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -36,4 +38,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Return a collection of associated todos.
+     *
+     * @return HasMany
+     */
+    public function todos(): HasMany
+    {
+        return $this->hasMany(\App\Todo::class);
+    }
 }
