@@ -31,6 +31,6 @@ class TodoTest extends TestCase
      */
     public function testShouldHaveAnAssociatedUser()
     {
-        $this->assertNotInstanceOf('App\User', $this->todo->user);
+        $this->assertInstanceOf('App\User', $this->todo->user);
     }
 }
