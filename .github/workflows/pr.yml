@@ -40,7 +40,7 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-        run: vendor/bin/phpunit
+        run: php artisan test
 
   phpinsights:
     needs: check_skip
@@ -52,4 +52,4 @@ jobs:
         with:
             php-version: '7.4'
       - run: composer install --prefer-dist --no-progress --no-suggest
-      - run: vendor/bin/phpinsights -n --ansi --format=github-action
+      - run: php artisan insights -n --ansi --format=github-action
